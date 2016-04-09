@@ -4,7 +4,7 @@ import java.util.Scanner;
 /**
  * Created by icondor on 26/03/16.
  */
-public class Main {
+public class AgendaDeNume {
 
     /* utility methods for INPUT/OUTPUT using a GUI or Console, please leave them as they are */
 
@@ -73,33 +73,83 @@ public class Main {
     }
     /* end of utility methods*/
 
+    static String[] sirDeNume = new String[10];
+    static int index=0;
 
     /* here starts the main class - exercitiu in clasa */
     public static void main(String[] arguments) {
+        int optiune = 0;
+        do {
+            printConsole("1-listare ");
+            printConsole("2-adaugare");
+            printConsole("3-cautare");
+            printConsole("7-exit");
+            optiune = readIntConsole("alegeti un numar");
+            if (optiune == 1)
+                listare();
+            else if (optiune == 2) {
+                String v = readStringConsole("numele");
+                creareFaraDuplicate(v);
+            }
 
-        // citire numar 1
-        //citire numar 2
-        //apel maxim
-        //afisare maxim
-
-        int calin = readIntConsole("nr 1: ");
-        int grigore = readIntConsole("nr 2 ");
-
-        int cucuBauMax = maximMet(calin, grigore);
-        printConsole("maximul este: " + cucuBauMax);
+        } while (optiune != 7);
     }
 
-    public static int maximMet (int n1, int n2) {
-        int m = n1;
-        if (n1 < n2) ;
-        m = n2;
-        return m;
+        //do
+            //listare
+            //adaugare
+            //acasa modificare
+            //acasa stergere
+            //cautare
+            //acasa exit
+        //while exit
+
+//        listare();
+//        creareFaraDuplicate("andrei");
+//        creareFaraDuplicate("ion");
+//        creareFaraDuplicate("maria");
+//        creareFaraDuplicate("maria");
+//        creareFaraDuplicate("ana");
+//        listare();
+//        int pozitie = cautare("maria");
+//        System.out.println(pozitie);
+
+    //end of main method
+
+    public static void listare() {
+        for (int i = 0; i<sirDeNume.length; i++){
+            if (sirDeNume[i] != null) {
+                printConsole(sirDeNume[i]);
+            }
+        }
     }
 
-
-
-        //end of main method
-
-
+    public static void creare(String valoare) {
+        sirDeNume[index] = valoare;
+        index++;
     }
+
+    public static void creareFaraDuplicate(String valoare) {
+        int i = cautare(valoare);
+        if (i!=-1 || index==0) { //negasita.. deci scri-o
+            sirDeNume[index] = valoare;
+            index++;
+        } else {
+            System.out.println("deja exista");
+        }
+    }
+
+    public static int cautare(String valoare) {
+        int r =-1; //negasit
+
+        for (int i = 0; i<sirDeNume.length; i++){
+            if (valoare.equals(sirDeNume[i])){
+                r=i; //negasit pe pozitia x
+                break;
+            }
+         }
+    return r;
+    }
+
+}
 // end of class

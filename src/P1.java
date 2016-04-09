@@ -1,10 +1,11 @@
 import javax.swing.*;
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
  * Created by icondor on 26/03/16.
  */
-public class Main {
+public class P1 {
 
     /* utility methods for INPUT/OUTPUT using a GUI or Console, please leave them as they are */
 
@@ -73,33 +74,46 @@ public class Main {
     }
     /* end of utility methods*/
 
-
     /* here starts the main class - exercitiu in clasa */
     public static void main(String[] arguments) {
 
-        // citire numar 1
-        //citire numar 2
-        //apel maxim
-        //afisare maxim
+        String user = "ana";
+        String parola = "cucu76";
 
-        int calin = readIntConsole("nr 1: ");
-        int grigore = readIntConsole("nr 2 ");
+        //lansare Notepad () doar daca combinatia este corecta
 
-        int cucuBauMax = maximMet(calin, grigore);
-        printConsole("maximul este: " + cucuBauMax);
+        boolean run = true;
+        int count = 0;
+
+        do {
+            String u = readStringGUI("User");
+            String p = readStringGUI("Parola");
+
+            if (user.equals(u) && parola.equals(p)) {
+                LansareNotePad();
+                run = false;
+            }
+            count++;
+            if (count == 3) {
+                break;
+            }
+
+        }
+        while (run = true);
     }
 
-    public static int maximMet (int n1, int n2) {
-        int m = n1;
-        if (n1 < n2) ;
-        m = n2;
-        return m;
+    //end of main method
+    public static void LansareNotePad() {
+        // code de pe net
+        Runtime runtime = Runtime.getRuntime();
+        try {
+            Process process = runtime.exec("notepad");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("lansare");
     }
+}
 
 
-
-        //end of main method
-
-
-    }
 // end of class

@@ -4,7 +4,7 @@ import java.util.Scanner;
 /**
  * Created by icondor on 26/03/16.
  */
-public class Main {
+public class Main1 {
 
     /* utility methods for INPUT/OUTPUT using a GUI or Console, please leave them as they are */
 
@@ -82,11 +82,20 @@ public class Main {
         //apel maxim
         //afisare maxim
 
-        int calin = readIntConsole("nr 1: ");
-        int grigore = readIntConsole("nr 2 ");
+        boolean iesi = true;
+        do {
 
-        int cucuBauMax = maximMet(calin, grigore);
-        printConsole("maximul este: " + cucuBauMax);
+            int calin = readIntGUI("nr 1: ");
+            int grigore = readIntGUI("nr 2 ");
+
+            if (calin == 0 || grigore == 0)
+                iesi = true;
+            if (!iesi) {
+                int cucuBauMax = maximMet(calin, grigore);
+                printGUI("maximul este: " + cucuBauMax);
+            }
+        }
+        while (!true);
     }
 
     public static int maximMet (int n1, int n2) {
